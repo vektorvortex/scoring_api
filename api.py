@@ -299,7 +299,7 @@ class MainHTTPHandler(BaseHTTPRequestHandler):
         request = None
         try:
             data_string = self.rfile.read(int(self.headers['Content-Length']))
-            request = json.loads(data_string)
+            request = json.loads(str(data_string, encoding='utf-8'))
         except Exception:
             code = BAD_REQUEST
 
